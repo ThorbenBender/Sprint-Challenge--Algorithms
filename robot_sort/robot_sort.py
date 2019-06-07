@@ -100,12 +100,16 @@ class SortingRobot:
         """
         # Fill this out
         self._item = self._list[0]
-        for i in range(0, len(self._list)):
-            while self.can_move_right:
-                if self.compare_item() == -1:
-                    self.swap_item()
-                else:
-                    self.move_right()
+        while self.can_move_right():
+            if self.compare_item == -1:
+                self.swap_item()
+                self.move_right()
+            elif not self.can_move_right:
+                self.move_left()
+                self.sort()
+            else:
+                self.move_right()
+                self.sort()
 
 
 if __name__ == "__main__":
